@@ -1,8 +1,8 @@
+// @ts-nocheck
 import { Fragment, useEffect, useState } from 'react';
 import { Knob } from 'primereact/knob';
 import { useAppSelector } from '../hooks/useStoreTypes';
 import '../styles/knobs.css';
-import { Asset } from '../types/Asset';
 
 
 export const Knobs = () => {

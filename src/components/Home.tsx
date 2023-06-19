@@ -1,6 +1,3 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../hooks/useStoreTypes';
 import { Tiles } from './Tiles';
 import { PendingChart } from './PendingChart';
 import { ExpensesChart } from './ExpensesChart';

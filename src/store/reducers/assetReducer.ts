@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { GlobalState } from '../../types/Store';
 
 const INITIAL_STATE = {

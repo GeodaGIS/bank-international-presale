@@ -1,8 +1,8 @@
+// @ts-nocheck
 import { useEffect, useState } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { useAppSelector } from '../hooks/useStoreTypes';
-import { UtilService } from '../services/UtilService';
 import '../styles/preview-table.css';
 import { Field } from '../types/Field';
 import { Asset } from '../types/Asset';

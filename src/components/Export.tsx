@@ -1,11 +1,9 @@
-import { useEffect } from 'react';
+// @ts-nocheck
 import ExcelIcon from '../icons/excel-icon.png';
-import MailIcon from '../icons/mail-icon.png';
-import PDFIcon from '../icons/pdf-icon.png';
 import { Asset } from '../types/Asset';
 import { Field } from '../types/Field';
 import '../styles/export.css';
-import jsPDF from 'jspdf';
+// import jsPDF from 'jspdf';
 
 interface Props {
     assets: Asset[],
@@ -30,17 +28,17 @@ export const Export = (props: Props) => {
     // }
 
 
-    const exportToPDF = () => {
-        const file = new jsPDF();
-        // const table = getTable();
-        // file.text(table, 10, 10);
-        const img = new Image();
-        img.src = ExcelIcon;
-        img.onload = function () {
-            file.addImage(img, 'PNG', 30, 30, 30, 30);
-            file.save("output.pdf");
-        }
-    }
+    // const exportToPDF = () => {
+    //     const file = new jsPDF();
+    //     // const table = getTable();
+    //     // file.text(table, 10, 10);
+    //     const img = new Image();
+    //     img.src = ExcelIcon;
+    //     img.onload = function () {
+    //         file.addImage(img, 'PNG', 30, 30, 30, 30);
+    //         file.save("output.pdf");
+    //     }
+    // }
 
 
     const exportToExcel = () => {

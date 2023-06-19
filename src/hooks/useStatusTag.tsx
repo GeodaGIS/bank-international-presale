@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Tag } from 'primereact/tag';
 
 

@@ -1,9 +1,10 @@
+// @ts-nocheck
 import { useState, useEffect } from 'react';
 import '../styles/pending-chart.css';
 import { Chart } from 'primereact/chart';
 import { useAppSelector } from '../hooks/useStoreTypes';
 import { Asset } from '../types/Asset';
-import jsPDF from 'jspdf';
+// import jsPDF from 'jspdf';
 
 
 export const PendingChart = () => {

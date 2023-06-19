@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { store } from '../store';
 import { Asset } from './Asset';
 

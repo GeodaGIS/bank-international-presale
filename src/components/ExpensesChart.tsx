@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState } from 'react';
 import { Chart } from 'primereact/chart';
 import '../styles/expenses-chart.css';

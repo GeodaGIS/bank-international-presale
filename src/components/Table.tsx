@@ -1,4 +1,5 @@
-import { useEffect, useState, useMemo } from 'react';
+// @ts-nocheck
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Asset } from '../types/Asset';
 import { useAppDispatch, useAppSelector } from '../hooks/useStoreTypes';

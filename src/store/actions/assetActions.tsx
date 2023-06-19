@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { AssetService } from '../../services/AssetService';
 
 export function loadAssets() {

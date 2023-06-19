@@ -20,7 +20,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='bank-international-presale'>
       <main className='app-main-container'>
         <AppHeader />
         <Routes>

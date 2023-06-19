@@ -1,0 +1,36 @@
+.app-header-container {
+    border: 1px solid #878787;
+    background-image: linear-gradient(to right, #e7d49b 0%, #f3e4b7 50%, #f5e5aa 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.app-header-container nav span {
+    font-size: 20px;
+}
+
+.contact-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.contact-container div {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.contact-container div span {
+    cursor: pointer;
+}
+
+.contact-container div span .make-contact {
+    line-height: 20px;
+}
+
+.app-header-container img {
+    width: 8%;
+}

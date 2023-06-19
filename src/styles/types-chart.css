@@ -1,0 +1,7 @@
+.types-chart-container {
+    flex-grow: 1;
+    margin: 5px;
+    padding: 7px 15px;
+    background: whitesmoke;
+    box-shadow: inset 0px 0px 10px 8px #c1c1c1b8;
+}

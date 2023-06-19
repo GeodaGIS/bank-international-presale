@@ -1,0 +1,9 @@
+.expenses-chart-container {
+    background: whitesmoke;
+    margin: 5px;
+    /* width: 450px; */
+    padding: 7px;
+    height: fit-content;
+    box-shadow: inset 0px 0px 10px 8px #c1c1c1b8;
+    flex-grow: 3;
+}

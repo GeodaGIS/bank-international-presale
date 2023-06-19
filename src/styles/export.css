@@ -1,0 +1,12 @@
+.export-container {
+    display: flex;
+    gap: 10px;
+}
+
+.export-container img {
+    cursor: pointer;
+}
+
+.export-container img:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,17 @@
+:root {
+  font-family: sans-serif;
+  color: #0f3c8f;
+  background-color: #e5e5e5;
+}
+
+body {
+  box-sizing: border-box;
+  /* border: 1px solid black; */
+  margin: 5px;
+  /* display: flex; */
+  /* place-items: center; */
+  /* min-width: 320px; */
+  min-height: 100vh;
+  overflow-y: hidden;
+  /* background: rgb(140, 197, 140); */
+}

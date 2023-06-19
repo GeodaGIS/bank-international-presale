@@ -1,0 +1,28 @@
+.home-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* height: 285px; */
+    /* background: rgb(194, 119, 34); */
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.upper-container {
+    /* background-color: aquamarine; */
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+}
+
+.charts-container {
+    display: flex;
+    flex-grow: 1;
+    /* background-color: blue; */
+}
+
+.lower-container {
+    /* background-color: brown; */
+    flex-grow: 1;
+    display: flex;
+    max-height: 52vh;
+}

@@ -5,6 +5,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
+    margin-bottom: 7px;
 }
 
 .app-header-container nav span {

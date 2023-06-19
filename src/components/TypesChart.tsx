@@ -91,7 +91,7 @@ export const TypesChart = () => {
         return {
             indexAxis: 'y',
             maintainAspectRatio: false,
-            aspectRatio: 0.81,
+            aspectRatio: 0.82,
             scales: {
                 x: {
                     stacked: true,

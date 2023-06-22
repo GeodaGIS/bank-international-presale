@@ -1,10 +1,10 @@
 .home-container {
     display: flex;
     flex-wrap: wrap;
-    /* height: 285px; */
     /* background: rgb(194, 119, 34); */
-    flex-grow: 1;
+    /* flex-grow: 1; */
     flex-direction: column;
+    min-height: 90vh;
 }
 
 .upper-container {
@@ -22,7 +22,8 @@
 
 .lower-container {
     /* background-color: brown; */
-    flex-grow: 1;
+    /* flex-grow: 1; */
     display: flex;
-    max-height: 51vh;
+    /* max-height: 60vh; */
+    min-height: 61vh;
 }

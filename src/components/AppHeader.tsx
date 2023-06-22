@@ -1,24 +1,24 @@
 import { useMemo } from 'react';
 import '../styles/app-header.css';
 import { NavLink, useLocation } from 'react-router-dom';
+import geodaLogo from '../icons/geoda_logo.png';
 
 
 export const AppHeader = () => {
-    const geodaLogoUrl = 'https://geoda.co.il/wp-content/uploads/2018/03/geoda_main_logo.png';
     const location = useLocation();
     const isAtHome = useMemo(() => location.pathname === '/', [location]);
 
     return (
         <div className="app-header-container">
 
-            <img src={geodaLogoUrl} />
+            <img src={geodaLogo} width={60} height={55} title='גאודע' />
 
             <nav>
                 <NavLink
                     to={'/'}
                     style={{
                         fontSize: '18px',
-                        color: isAtHome ? '#bd0000' : '#0f3c8f'
+                        color: isAtHome ? '#c8c8c8' : '#969faf'
                     }}
                 >
                     <span className="pi pi-home" title='עבור אל מסך הבית'></span>

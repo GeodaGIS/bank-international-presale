@@ -52,36 +52,41 @@ export const TypesChart = () => {
                     type: 'bar',
                     label: 'סניף',
                     data: [branch.inOwnershipCount, branch.inRentCount],
-                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
-                    barThickness: 90
+                    // backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    backgroundColor: '#89C0C4',
+                    barThickness: 150
                 },
                 {
                     type: 'bar',
                     label: 'חניון',
                     data: [parking.inOwnershipCount, parking.inRentCount],
-                    backgroundColor: 'rgba(153, 102, 255, 0.6)',
-                    barThickness: 90
+                    // backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                    backgroundColor: '#579EB9',
+                    barThickness: 150
                 },
                 {
                     type: 'bar',
                     label: 'מחסן',
                     data: [storage.inOwnershipCount, storage.inRentCount],
-                    backgroundColor: 'rgba(255, 205, 86, 0.6)',
-                    barThickness: 90
+                    // backgroundColor: 'rgba(255, 205, 86, 0.6)',
+                    backgroundColor: '#397AA8',
+                    barThickness: 150
                 },
                 {
                     type: 'bar',
                     label: 'משרדים',
                     data: [office.inOwnershipCount, office.inRentCount],
-                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
-                    barThickness: 90
+                    // backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    backgroundColor: '#1C5796',
+                    barThickness: 150
                 },
                 {
                     type: 'bar',
                     label: 'כספומט',
                     data: [atm.inOwnershipCount, atm.inRentCount],
-                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                    barThickness: 90
+                    // backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    backgroundColor: '#163771',
+                    barThickness: 150
                 }
             ]
         };
@@ -92,7 +97,7 @@ export const TypesChart = () => {
         return {
             indexAxis: 'y',
             maintainAspectRatio: false,
-            aspectRatio: 0.82,
+            aspectRatio: 0.52,
             scales: {
                 x: {
                     stacked: true,

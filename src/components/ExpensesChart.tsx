@@ -26,13 +26,13 @@ export const ExpensesChart = () => {
                 {
                     label: 'דמי שימוש ממודד',
                     data: [7000, 11000, 10000, 12000, 14000, 9000, 10000, 10000, 9000, 11000, 10000, 9000],
-                    borderColor: '#9176b3',
+                    borderColor: '#579EB9',
                     tension: 0.4
                 },
                 {
                     label: 'סך הוצאות שוטפות',
                     data: [15000, 14000, 12000, 10000, 12000, 13000, 14000, 13000, 14000, 11000, 13000, 15000],
-                    borderColor: '#25B025',
+                    borderColor: '#163771',
                     tension: 0.4
                 }
             ]
@@ -43,32 +43,7 @@ export const ExpensesChart = () => {
     const getOptions = () => {
         return {
             maintainAspectRatio: false,
-            aspectRatio: 1.15,
-            plugins: {
-                legend: {
-                    labels: {
-                        // color: textColor
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        // color: textColorSecondary
-                    },
-                    grid: {
-                        // color: surfaceBorder
-                    }
-                },
-                y: {
-                    ticks: {
-                        // color: textColorSecondary
-                    },
-                    grid: {
-                        // color: surfaceBorder
-                    }
-                }
-            }
+            aspectRatio: 1.15
         };
     }
 

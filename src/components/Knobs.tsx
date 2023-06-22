@@ -21,26 +21,22 @@ export const Knobs = () => {
     const setData = () => {
         const activeContractsDataSet = {
             label: 'חוזים פעילים',
-            value: assets.filter(asset => asset.contractStatus === 'פעיל').length,
-            valueColor: '#22C55E'
+            value: assets.filter(asset => asset.contractStatus === 'פעיל').length
         };
 
         const closeRenewalContractsDataSet = {
             label: 'חוזים לחידוש השנה',
-            value: assets.filter(asset => asset.contractRenewalAt <= deadLine).length,
-            valueColor: 'rgba(61, 175, 204, 0.7)'
+            value: assets.filter(asset => asset.contractRenewalAt <= deadLine).length
         };
 
         const closeExitDataSet = {
             label: 'חוזים עם נקודות יציאה השנה',
-            value: assets.filter(asset => asset.closeExitAt <= deadLine).length,
-            valueColor: 'rgba(255, 255, 15, 0.7)'
+            value: assets.filter(asset => asset.closeExitAt <= deadLine).length
         };
 
         const closeOptionEndDataSet = {
             label: 'חוזים עם סיום אופציה השנה',
-            value: assets.filter(asset => asset.optionEndsAt <= deadLine).length,
-            valueColor: 'rgba(78, 81, 252, 0.7)'
+            value: assets.filter(asset => asset.optionEndsAt <= deadLine).length
         };
 
         setDataSets([activeContractsDataSet, closeRenewalContractsDataSet, closeExitDataSet, closeOptionEndDataSet]);
@@ -56,7 +52,7 @@ export const Knobs = () => {
                             <strong>{dataSet.label}</strong>
                             <Knob
                                 value={dataSet.value}
-                                valueColor={dataSet.valueColor}
+                                valueColor='#397AA8'
                                 rangeColor="rgba(162, 163, 166, 0.6)"
                                 min={0} max={assets.length}
                                 size={95}

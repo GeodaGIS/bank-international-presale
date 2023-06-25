@@ -53,35 +53,35 @@ export const TypesChart = () => {
                     label: 'סניף',
                     data: [branch.inOwnershipCount, branch.inRentCount],
                     backgroundColor: '#89C0C4',
-                    barThickness: 150
+                    barThickness: 60
                 },
                 {
                     type: 'bar',
                     label: 'חניון',
                     data: [parking.inOwnershipCount, parking.inRentCount],
                     backgroundColor: '#579EB9',
-                    barThickness: 150
+                    barThickness: 60
                 },
                 {
                     type: 'bar',
                     label: 'מחסן',
                     data: [storage.inOwnershipCount, storage.inRentCount],
                     backgroundColor: '#397AA8',
-                    barThickness: 150
+                    barThickness: 60
                 },
                 {
                     type: 'bar',
                     label: 'משרדים',
                     data: [office.inOwnershipCount, office.inRentCount],
                     backgroundColor: '#1C5796',
-                    barThickness: 150
+                    barThickness: 60
                 },
                 {
                     type: 'bar',
                     label: 'כספומט',
                     data: [atm.inOwnershipCount, atm.inRentCount],
                     backgroundColor: '#163771',
-                    barThickness: 150
+                    barThickness: 60
                 }
             ]
         };
@@ -91,8 +91,8 @@ export const TypesChart = () => {
     const getOptions = () => {
         return {
             indexAxis: 'y',
-            maintainAspectRatio: false,
-            aspectRatio: 0.52,
+            maintainAspectRatio: true,
+            aspectRatio: 5,
             scales: {
                 x: {
                     stacked: true,

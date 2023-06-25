@@ -43,7 +43,7 @@ export const ExpensesChart = () => {
     const getOptions = () => {
         return {
             maintainAspectRatio: false,
-            aspectRatio: 1.15
+            aspectRatio: 0.5
         };
     }
 

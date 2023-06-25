@@ -13,14 +13,14 @@ export const Home = () => {
             <div className='upper-container'>
                 <Tiles />
                 <section className='charts-container'>
-                    <ExpensesChart />
+                    <TypesChart />
                     <PendingChart />
                     <Knobs />
                 </section>
             </div>
             <div className='lower-container'>
                 <PreviewTable />
-                <TypesChart />
+                <ExpensesChart />
             </div>
         </div>
     )

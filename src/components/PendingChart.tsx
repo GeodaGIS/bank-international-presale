@@ -37,7 +37,7 @@ export const PendingChart = () => {
                 label: 'חוזים בסבב אישורים',
                 data: approversFrequencies,
                 backgroundColor: ['#163771'],
-                barThickness: 70
+                barThickness: 50
             }]
         }
     }

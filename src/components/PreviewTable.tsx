@@ -28,8 +28,10 @@ export const PreviewTable = () => {
     const getFieldsMap = () => {
         return {
             branchNum: 'מספר סניף',
+            branchName: 'שם סניף',
             rentContractId: 'חוזה שכירות',
             managementContractId: 'חוזה ניהול',
+            address: 'כתובת',
             town: 'עיר',
             areaSizePerEmployee: 'שטח לעובד',
             monthleyIndexedServiceFee: 'דמ"ש לחודש ממודד',

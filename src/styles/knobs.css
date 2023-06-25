@@ -5,7 +5,7 @@
     margin: 5px;
     background: whitesmoke;
     box-shadow: inset 0px 0px 10px 8px #c1c1c1b8;
-    /* flex-grow: 1; */
+    flex-grow: 1;
 }
 
 .knobs-container div {

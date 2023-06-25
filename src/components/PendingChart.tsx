@@ -36,7 +36,8 @@ export const PendingChart = () => {
             datasets: [{
                 label: 'חוזים בסבב אישורים',
                 data: approversFrequencies,
-                backgroundColor: ['rgba(245, 158, 11, 0.6)']
+                backgroundColor: ['#163771'],
+                barThickness: 70
             }]
         }
     }
@@ -46,7 +47,7 @@ export const PendingChart = () => {
         return {
             indexAxis: 'y',
             maintainAspectRatio: false,
-            aspectRatio: 1.15,
+            aspectRatio: 0.5,
             scales: {
                 x: {
                     ticks: { stepSize: 1 },

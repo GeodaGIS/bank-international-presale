@@ -32,7 +32,8 @@ export const ExpensesChart = () => {
                 {
                     label: 'סך הוצאות שוטפות',
                     data: [15000, 14000, 12000, 10000, 12000, 13000, 14000, 13000, 14000, 11000, 13000, 15000],
-                    borderColor: '#163771',
+                    // borderColor: '#163771',
+                    borderColor: 'rgba(245, 158, 11, 0.6)',
                     tension: 0.4
                 }
             ]
@@ -43,7 +44,7 @@ export const ExpensesChart = () => {
     const getOptions = () => {
         return {
             maintainAspectRatio: false,
-            aspectRatio: 0.5
+            aspectRatio: 1.15
         };
     }
 

@@ -1,9 +1,9 @@
 .pending-chart-container {
     margin: 5px;
-    height: fit-content;
+    /* height: fit-content; */
     padding: 7px;
     /* width: 332px; */
     background: whitesmoke;
     box-shadow: inset 0px 0px 10px 8px #c1c1c1b8;
-    /* flex-grow: 2; */
+    flex-grow: 1;
 }

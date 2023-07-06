@@ -11,7 +11,6 @@ export const Home = () => {
     return (
         <div className='home-container'>
             <div className='upper-container'>
-                <Tiles />
                 <section className='charts-container'>
                     <TypesChart />
                     <ExpensesChart />
@@ -19,7 +18,8 @@ export const Home = () => {
                 </section>
             </div>
             <div className='lower-container'>
-                <PreviewTable />
+                {/* <PreviewTable /> */}
+                <Tiles />
                 <PendingChart />
             </div>
         </div>

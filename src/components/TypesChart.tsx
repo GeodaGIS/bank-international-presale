@@ -3,16 +3,18 @@ import { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
 import { useAppSelector } from '../hooks/useStoreTypes';
 import '../styles/types-chart.css';
+import { useAssign } from '../hooks/useAssign';
 
 
 export const TypesChart = () => {
     const { assets } = useAppSelector(state => state.assetModule);
+    const { contracts } = useAppSelector(state => state.contractModule);
     const [data, setData] = useState(null);
     const [options, setOptions] = useState(null);
 
 
     useEffect(() => {
-        if (assets.length) {
+        if (assets.length && contracts.length) {
             setData(getData());
             setOptions(getOptions());
         }
@@ -20,29 +22,31 @@ export const TypesChart = () => {
 
 
     const getData = () => {
+        const assignedAssets = useAssign(assets, contracts);
+
         const branch = {
-            inOwnershipCount: assets.filter(asset => !asset.isInRent && asset.type === 'סניף').length,
-            inRentCount: assets.filter(asset => asset.isInRent && asset.type === 'סניף').length
+            inOwnershipCount: assignedAssets.filter(asset => !asset.isInRent && asset.type === 'סניף').length,
+            inRentCount: assignedAssets.filter(asset => asset.isInRent && asset.type === 'סניף').length
         }
 
         const parking = {
-            inOwnershipCount: assets.filter(asset => !asset.isInRent && asset.type === 'חניון').length,
-            inRentCount: assets.filter(asset => asset.isInRent && asset.type === 'חניון').length
+            inOwnershipCount: assignedAssets.filter(asset => !asset.isInRent && asset.type === 'חניון').length,
+            inRentCount: assignedAssets.filter(asset => asset.isInRent && asset.type === 'חניון').length
         }
 
         const storage = {
-            inOwnershipCount: assets.filter(asset => !asset.isInRent && asset.type === 'מחסן').length,
-            inRentCount: assets.filter(asset => asset.isInRent && asset.type === 'מחסן').length
+            inOwnershipCount: assignedAssets.filter(asset => !asset.isInRent && asset.type === 'מחסן').length,
+            inRentCount: assignedAssets.filter(asset => asset.isInRent && asset.type === 'מחסן').length
         }
 
         const office = {
-            inOwnershipCount: assets.filter(asset => !asset.isInRent && asset.type === 'משרדים').length,
-            inRentCount: assets.filter(asset => asset.isInRent && asset.type === 'משרדים').length
+            inOwnershipCount: assignedAssets.filter(asset => !asset.isInRent && asset.type === 'משרדים').length,
+            inRentCount: assignedAssets.filter(asset => asset.isInRent && asset.type === 'משרדים').length
         }
 
         const atm = {
-            inOwnershipCount: assets.filter(asset => !asset.isInRent && asset.type === 'כספומט').length,
-            inRentCount: assets.filter(asset => asset.isInRent && asset.type === 'כספומט').length
+            inOwnershipCount: assignedAssets.filter(asset => !asset.isInRent && asset.type === 'כספומט').length,
+            inRentCount: assignedAssets.filter(asset => asset.isInRent && asset.type === 'כספומט').length
         }
 
         return {

@@ -1,41 +1,45 @@
 // @ts-nocheck
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Asset } from '../types/Asset';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks/useStoreTypes';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { UtilService } from '../services/UtilService';
 import { loadAssets } from '../store/actions/assetActions';
+import { loadContracts } from '../store/actions/contractActions';
 import { Field } from '../types/Field';
 import '../styles/table.css';
-import { useAssetsToShow } from '../hooks/useAssetsToShow';
+import { useReadable } from '../hooks/useReadable';
 import { Export } from './Export';
 import { useStatusTag } from '../hooks/useStatusTag';
+import { TableSearch } from './TableSearch';
 
 
 export const Table = () => {
     const dispatch = useAppDispatch();
     const location = useLocation();
     const { assets } = useAppSelector(state => state.assetModule);
-    const [assetsToShow, setAssetsToShow] = useState<Asset[]>([]);
-    const [selectedAssets, setSelectedAssets] = useState<Asset[]>([]);
+    const { contracts } = useAppSelector(state => state.contractModule);
+    const [readableAssets, setReadableAssets] = useState([]);
+    const [selectedAssets, setSelectedAssets] = useState([]);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
         if (!assets.length) {
             dispatch(loadAssets());
         }
+        if (!contracts.length) {
+            dispatch(loadContracts());
+        }
     }, [])
 
 
     useEffect(() => {
-        if (assets.length) {
-            const { filteredAssets } = location.state;
-            const assetsToShow = useAssetsToShow(filteredAssets);
-            setAssetsToShow(assetsToShow);
+        if (assets.length && contracts.length) {
+            setAllAssets();
         }
-    }, [assets])
+    }, [assets, contracts])
 
 
     const getFields = () => {
@@ -45,7 +49,7 @@ export const Table = () => {
             return {
                 name: fieldName,
                 alias: fieldsMap[fieldName]
-            } as Field
+            } as Field;
         });
     }
 
@@ -53,21 +57,59 @@ export const Table = () => {
     const fields = getFields();
 
 
+    const onSearch = (searchVal) => {
+        if (searchVal) {
+            const filteredAssets = readableAssets.filter(asset => {
+                const values = Object.values(asset);
+                const strValues = values.map(value => `${value}`);
+                return strValues.includes(searchVal);
+            });
+            if (filteredAssets.length) {
+                setReadableAssets(filteredAssets);
+                setSelectedAssets([]);
+            } else {
+                setAllAssets();
+            }
+        } else {
+            setAllAssets();
+        }
+    }
+
+
+    const setAllAssets = () => {
+        const { assignedAssets } = location.state;
+        const readableAssets = useReadable(assignedAssets, 'asset');
+        setReadableAssets(readableAssets);
+    }
+
+
+    const getDetailsBtn = (readableAsset) => {
+        const asset = assets.find(asset => asset.branchName === readableAsset.branchName);
+        return <span
+            onClick={() => navigate(`/asset/${asset.id}`)}
+            className="pi pi-book"
+            title='הצג פרטי נכס'
+            style={{ cursor: 'pointer' }}
+        />
+    }
+
+
     return (
         <div className='table-container'>
-            {assetsToShow.length ? (
+            {readableAssets.length ? (
                 <>
                     <header>
                         <h2>{location.state.he}</h2>
+                        <TableSearch onSearch={onSearch} />
                         <Export
-                            assets={selectedAssets.length ? selectedAssets : assetsToShow}
+                            records={selectedAssets.length ? selectedAssets : readableAssets}
                             fields={fields}
-                            headline={selectedAssets.length ? 'נכסים שנבחרו' : location.state.he}
+                            headline={'נכסים'}
                         />
                     </header>
                     <DataTable
-                        value={assetsToShow}
-                        rows={assetsToShow.length}
+                        value={readableAssets}
+                        rows={readableAssets.length}
                         dataKey="id"
                         emptyMessage={'לא נמצאו נכסים'}
                         scrollable
@@ -76,6 +118,7 @@ export const Table = () => {
                         onSelectionChange={(ev) => setSelectedAssets(ev.value)}
                     >
                         <Column selectionMode="multiple" className='checkbox-column' />
+                        <Column body={getDetailsBtn} />
                         {fields.map(field => {
                             if (field.name === 'contractStatus') {
                                 return <Column

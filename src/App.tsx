@@ -9,6 +9,9 @@ import { useEffect } from 'react';
 import { Table } from './components/Table';
 import { useAppDispatch } from './hooks/useStoreTypes';
 import { loadAssets } from './store/actions/assetActions';
+import { loadContracts } from './store/actions/contractActions';
+import { loadPayments } from './store/actions/paymentActions';
+import { AssetDetails } from './components/AssetDetails';
 
 
 function App() {
@@ -17,6 +20,8 @@ function App() {
 
   useEffect(() => {
     dispatch(loadAssets());
+    dispatch(loadContracts());
+    dispatch(loadPayments());
   }, []);
 
   return (
@@ -26,10 +31,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/table" element={<Table />} />
+          <Route path="/asset/:id" element={<AssetDetails />} />
         </Routes>
       </main>
     </BrowserRouter>
   )
+
 }
 
 export default App

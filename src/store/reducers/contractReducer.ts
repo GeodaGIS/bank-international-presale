@@ -1,23 +1,22 @@
 // @ts-nocheck
 
-
 const INITIAL_STATE = {
-    assets: []
+    contracts: []
 };
 
-
-export function assetReducer(state = INITIAL_STATE, action) {
+export function contractReducer(state = INITIAL_STATE, action) {
 
     switch (action.type) {
 
-        case 'SET_ASSETS':
+        case 'SET_CONTRACTS':
             return {
                 ...state,
-                assets: [...action.assets]
+                contracts: [...action.contracts]
             };
 
         default:
             return state;
+
     }
 
 }

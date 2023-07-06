@@ -3,18 +3,19 @@ import { useState, useEffect } from 'react';
 import '../styles/pending-chart.css';
 import { Chart } from 'primereact/chart';
 import { useAppSelector } from '../hooks/useStoreTypes';
-import { Asset } from '../types/Asset';
+import { useAssign } from '../hooks/useAssign';
 // import jsPDF from 'jspdf';
 
 
 export const PendingChart = () => {
     const { assets } = useAppSelector(state => state.assetModule);
+    const { contracts } = useAppSelector(state => state.contractModule);
     const [data, setData] = useState(null);
     const [options, setOptions] = useState(null);
 
 
     useEffect(() => {
-        if (assets.length) {
+        if (assets.length && contracts.length) {
             setData(getData());
             setOptions(getOptions());
         }
@@ -22,8 +23,9 @@ export const PendingChart = () => {
 
 
     const getData = () => {
-        const pendingAssets = assets.filter((asset: Asset) => asset.contractStatus === 'ממתין לאישור');
-        const approversNames = pendingAssets.map((asset: Asset) => asset.approverName);
+        const assignedAssets = useAssign(assets, contracts);
+        const pendingAssets = assignedAssets.filter(asset => asset.contractStatus === 'ממתין לאישור');
+        const approversNames = pendingAssets.map(asset => asset.approverName);
         const uniqueApproversNames = [...new Set(approversNames)];
         uniqueApproversNames.sort();
         const approversFrequencies = uniqueApproversNames.map(uniqueName => {
@@ -47,7 +49,7 @@ export const PendingChart = () => {
         return {
             indexAxis: 'y',
             maintainAspectRatio: false,
-            aspectRatio: 0.5,
+            aspectRatio: 0.4,
             scales: {
                 x: {
                     ticks: { stepSize: 1 },
@@ -60,6 +62,9 @@ export const PendingChart = () => {
                         drawBorder: false
                     },
                 }
+            },
+            animation: {
+                duration: 0
             }
         }
     }

@@ -7,12 +7,13 @@ import { useAppSelector } from '../hooks/useStoreTypes';
 
 export const ExpensesChart = () => {
     const { assets } = useAppSelector(state => state.assetModule);
+    const { contracts } = useAppSelector(state => state.contractModule);
     const [data, setData] = useState(null);
     const [options, setOptions] = useState(null);
 
 
     useEffect(() => {
-        if (assets.length) {
+        if (assets.length && contracts.length) {
             setData(getData());
             setOptions(getOptions());
         }
@@ -32,7 +33,6 @@ export const ExpensesChart = () => {
                 {
                     label: 'סך הוצאות שוטפות',
                     data: [15000, 14000, 12000, 10000, 12000, 13000, 14000, 13000, 14000, 11000, 13000, 15000],
-                    // borderColor: '#163771',
                     borderColor: 'rgba(245, 158, 11, 0.6)',
                     tension: 0.4
                 }

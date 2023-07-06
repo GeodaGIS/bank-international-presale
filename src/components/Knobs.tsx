@@ -3,40 +3,44 @@ import { Fragment, useEffect, useState } from 'react';
 import { Knob } from 'primereact/knob';
 import { useAppSelector } from '../hooks/useStoreTypes';
 import '../styles/knobs.css';
+import { useAssign } from '../hooks/useAssign';
 
 
 export const Knobs = () => {
     const { assets } = useAppSelector(state => state.assetModule);
+    const { contracts } = useAppSelector(state => state.contractModule);
     const [dataSets, setDataSets] = useState([]);
     const deadLine = 1704059999000; // 31.12.23;
 
 
     useEffect(() => {
-        if (assets.length) {
+        if (assets.length && contracts.length) {
             setData();
         }
     }, [assets])
 
 
     const setData = () => {
+        const assignedAssets = useAssign(assets, contracts);
+
         const activeContractsDataSet = {
             label: 'חוזים פעילים',
-            value: assets.filter(asset => asset.contractStatus === 'פעיל').length
+            value: assignedAssets.filter(asset => asset.contractStatus === 'פעיל').length
         };
 
         const closeRenewalContractsDataSet = {
             label: 'חוזים לחידוש השנה',
-            value: assets.filter(asset => asset.contractRenewalAt <= deadLine).length
+            value: assignedAssets.filter(asset => asset.contractRenewalAt <= deadLine).length
         };
 
         const closeExitDataSet = {
             label: 'חוזים עם נקודות יציאה השנה',
-            value: assets.filter(asset => asset.closeExitAt <= deadLine).length
+            value: assignedAssets.filter(asset => asset.closeExitAt <= deadLine).length
         };
 
         const closeOptionEndDataSet = {
             label: 'חוזים עם סיום אופציה השנה',
-            value: assets.filter(asset => asset.optionEndsAt <= deadLine).length
+            value: assignedAssets.filter(asset => asset.optionEndsAt <= deadLine).length
         };
 
         setDataSets([activeContractsDataSet, closeRenewalContractsDataSet, closeExitDataSet, closeOptionEndDataSet]);

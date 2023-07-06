@@ -54,6 +54,10 @@
     margin: 0;
 }
 
+.table-container header .table-search-container {
+    margin-left: 130px;
+}
+
 .checkbox-column .p-column-header-content {
     /* width: 82%; */
 }

@@ -5,24 +5,27 @@ import { Column } from 'primereact/column';
 import { useAppSelector } from '../hooks/useStoreTypes';
 import '../styles/preview-table.css';
 import { Field } from '../types/Field';
-import { Asset } from '../types/Asset';
-import { useAssetsToShow } from '../hooks/useAssetsToShow';
+import { useReadable } from '../hooks/useReadable';
 import { Export } from './Export';
 import { useStatusTag } from '../hooks/useStatusTag';
+import { useAssign } from '../hooks/useAssign';
+import { TableSearch } from './TableSearch';
+import { useNavigate } from 'react-router-dom';
 
 
 export const PreviewTable = () => {
     const { assets } = useAppSelector(state => state.assetModule);
-    const [assetsToShow, setAssetsToShow] = useState<Asset[]>([]);
-    const [selectedAssets, setSelectedAssets] = useState<Asset[]>([]);
+    const { contracts } = useAppSelector(state => state.contractModule);
+    const [readableAssets, setReadableAssets] = useState([]);
+    const [selectedAssets, setSelectedAssets] = useState([]);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
-        if (assets.length) {
-            const assetsToShow = useAssetsToShow(assets);
-            setAssetsToShow(assetsToShow);
+        if (assets.length && contracts.length) {
+            setAllAssets();
         }
-    }, [assets])
+    }, [assets, contracts])
 
 
     const getFieldsMap = () => {
@@ -57,21 +60,59 @@ export const PreviewTable = () => {
     const fields = getFields();
 
 
+    const onSearch = (searchVal) => {
+        if (searchVal) {
+            const filteredAssets = readableAssets.filter(asset => {
+                const values = Object.values(asset);
+                const strValues = values.map(value => `${value}`);
+                return strValues.includes(searchVal);
+            });
+            if (filteredAssets.length) {
+                setReadableAssets(filteredAssets);
+                setSelectedAssets([]);
+            } else {
+                setAllAssets();
+            }
+        } else {
+            setAllAssets();
+        }
+    }
+
+
+    const setAllAssets = () => {
+        const assignedAssets = useAssign(assets, contracts);
+        const readableAssets = useReadable(assignedAssets, 'asset');
+        setReadableAssets(readableAssets);
+    }
+
+
+    const getDetailsBtn = (readableAsset) => {
+        const asset = assets.find(asset => asset.branchName === readableAsset.branchName);
+        return <span
+            onClick={() => navigate(`/asset/${asset.id}`)}
+            className="pi pi-book"
+            title='הצג פרטי נכס'
+            style={{ cursor: 'pointer' }}
+        />
+    }
+
+
     return (
         <div className='preview-table-container'>
-            {assetsToShow.length ? (
+            {readableAssets.length ? (
                 <>
                     <header>
-                        <h4>{'כל הנכסים'}</h4>
+                        <h2>{'כל הנכסים'}</h2>
+                        <TableSearch onSearch={onSearch} />
                         <Export
-                            assets={selectedAssets.length ? selectedAssets : assetsToShow}
+                            records={selectedAssets.length ? selectedAssets : readableAssets}
                             fields={fields}
-                            headline={selectedAssets.length ? 'נכסים שנבחרו' : 'כל הנכסים'}
+                            headline={'נכסים'}
                         />
                     </header>
                     <DataTable
-                        value={assetsToShow}
-                        rows={assetsToShow.length}
+                        value={readableAssets}
+                        rows={readableAssets.length}
                         dataKey="id"
                         emptyMessage={'לא נמצאו נכסים'}
                         scrollable
@@ -80,6 +121,7 @@ export const PreviewTable = () => {
                         onSelectionChange={(ev) => setSelectedAssets(ev.value)}
                     >
                         <Column selectionMode="multiple" className='checkbox-column' />
+                        <Column body={getDetailsBtn} />
                         {fields.map(field => {
                             if (field.name === 'contractStatus') {
                                 return <Column

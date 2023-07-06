@@ -51,8 +51,12 @@
     padding: 0 2px;
 }
 
-.preview-table-container h4 {
-    margin: 11px 6px;
+.preview-table-container h3 {
+    margin: 25px 6px;
+}
+
+.preview-table-container header .table-search-container {
+    margin-left: 130px;
 }
 
 .checkbox-column .p-column-header-content {

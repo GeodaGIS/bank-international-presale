@@ -1,18 +1,11 @@
 // @ts-nocheck
 import ExcelIcon from '../icons/excel-icon.png';
-import { Asset } from '../types/Asset';
-import { Field } from '../types/Field';
 import '../styles/export.css';
 // import jsPDF from 'jspdf';
 
-interface Props {
-    assets: Asset[],
-    fields: Field[],
-    headline: string
-}
 
-export const Export = (props: Props) => {
-    const { assets, fields, headline } = props;
+export const Export = (props) => {
+    const { records, fields, headline } = props;
 
 
     // const sendViaMail = () => {
@@ -51,9 +44,9 @@ export const Export = (props: Props) => {
     const getTable = () => {
         const fieldsNames = fields.map(field => field.name);
         const fieldsAliases = fields.map(field => field.alias);
-        const assetsToExport = assets.map(asset => {
-            const assetEntries = Object.entries(asset);
-            return assetEntries.reduce((newAsset, [key, value]) => {
+        const recordsToExport = records.map(record => {
+            const recordEntries = Object.entries(record);
+            return recordEntries.reduce((newAsset, [key, value]) => {
                 const isFieldToExport = fieldsNames.includes(key);
                 if (isFieldToExport) {
                     newAsset[key] = value;
@@ -61,8 +54,8 @@ export const Export = (props: Props) => {
                 return newAsset;
             }, {});
         });
-        const assetsToExportVals = assetsToExport.map(asset => Object.values(asset));
-        const rows = [fieldsAliases, ...assetsToExportVals];
+        const recordsToExportVals = recordsToExport.map(record => Object.values(record));
+        const rows = [fieldsAliases, ...recordsToExportVals];
         const strRows = rows.map(row => row.join(','));
         const table = strRows.join('\n');
         return table;
@@ -84,7 +77,7 @@ export const Export = (props: Props) => {
 
 
     return (
-        <div className="export-container">
+        <section className="export-container">
             {/* <img
                 src={MailIcon}
                 width={25} height={25}
@@ -99,10 +92,10 @@ export const Export = (props: Props) => {
             /> */}
             <img
                 src={ExcelIcon}
-                width={25} height={25}
+                width={35} height={35}
                 title='ייצא לאקסל'
                 onClick={exportToExcel}
             />
-        </div>
+        </section>
     )
 }

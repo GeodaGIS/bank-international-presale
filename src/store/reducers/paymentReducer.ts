@@ -1,23 +1,22 @@
 // @ts-nocheck
 
-
 const INITIAL_STATE = {
-    assets: []
+    payments: []
 };
 
-
-export function assetReducer(state = INITIAL_STATE, action) {
+export function paymentReducer(state = INITIAL_STATE, action) {
 
     switch (action.type) {
 
-        case 'SET_ASSETS':
+        case 'SET_PAYMENTS':
             return {
                 ...state,
-                assets: [...action.assets]
+                payments: [...action.payments]
             };
 
         default:
             return state;
+
     }
 
 }

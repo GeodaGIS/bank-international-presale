@@ -4,75 +4,122 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/tiles.css';
 import { useAppSelector } from '../hooks/useStoreTypes';
 import { Asset } from '../types/Asset';
+import { useAssign } from '../hooks/useAssign';
+
 
 export const Tiles = () => {
-    const { assets } = useAppSelector(state => state.assetModule);
     const navigate = useNavigate();
-    const [filteredAssetDataSets, setFilteredAssetDataSets] = useState<any[]>([]);
+    const { assets } = useAppSelector(state => state.assetModule);
+    const { contracts } = useAppSelector(state => state.contractModule);
+    const [assignedAssetsDataSets, setAssignedAssetsDataSets] = useState<any[]>([]);
     const deadLine = 1704059999000; // 31.12.23;
 
 
     useEffect(() => {
-        if (assets.length) {
-            setFilteredAssetDataSets([
+        if (assets.length && contracts.length) {
+            setAssignedAssetsDataSets([
                 {
                     en: 'all',
                     he: 'כל הנכסים',
-                    assets: getFilteredAssets('all')
+                    assignedAssets: getAssignedAssets('all')
                 },
                 {
                     en: 'rentEndingDate',
                     he: 'סיום שכירות השנה',
-                    assets: getFilteredAssets('rentEndingDate')
+                    assignedAssets: getAssignedAssets('rentEndingDate')
                 },
                 {
                     en: 'closeExitPoints',
                     he: 'נקודות יציאה קרובות',
-                    assets: getFilteredAssets('closeExitPoints')
+                    assignedAssets: getAssignedAssets('closeExitPoints')
+                },
+                {
+                    en: 'activeStatus',
+                    he: 'פעילים',
+                    assignedAssets: getAssignedAssets('activeStatus')
+                },
+                {
+                    en: 'nonActiveStatus',
+                    he: 'לא פעילים',
+                    assignedAssets: getAssignedAssets('nonActiveStatus')
                 },
                 {
                     en: 'pendingStatus',
                     he: 'ממתינים לאישור',
-                    assets: getFilteredAssets('pendingStatus')
-                }
+                    assignedAssets: getAssignedAssets('pendingStatus')
+                },
+                {
+                    en: 'bankBeinleumi',
+                    he: 'הבנק הבינלאומי',
+                    assignedAssets: getAssignedAssets('bankBeinleumi')
+                },
+                {
+                    en: 'bankMasad',
+                    he: 'בנק מסד',
+                    assignedAssets: getAssignedAssets('bankMasad')
+                },
+                {
+                    en: 'x',
+                    he: 'הוראות תשלום מרוכזות',
+                    assignedAssets: () => console.log('y')
+                },
+                {
+                    en: 'y',
+                    he: 'הוראות תשלום מפורטות',
+                    assignedAssets: () => console.log('x')
+                },
             ])
         }
-    }, [assets])
+    }, [assets, contracts])
 
 
-    const getFilteredAssets = (filterBy: string) => {
+    const getAssignedAssets = (filterBy: string) => {
+        const assignedAssets = useAssign(assets, contracts);
         if (filterBy === 'all') {
-            return assets;
+            return assignedAssets;
         }
         if (filterBy === 'rentEndingDate') {
-            return assets.filter((asset: Asset) => asset.rentEndsAt <= deadLine);
+            return assignedAssets.filter(asset => asset.rentEndsAt <= deadLine);
         }
         if (filterBy === 'closeExitPoints') {
-            return assets.filter((asset: Asset) => asset.closeExitAt <= deadLine);
+            return assignedAssets.filter(asset => asset.closeExitAt <= deadLine);
+        }
+        if (filterBy === 'activeStatus') {
+            return assignedAssets.filter(asset => asset.contractStatus === 'פעיל');
+        }
+        if (filterBy === 'nonActiveStatus') {
+            return assignedAssets.filter(asset => asset.contractStatus === 'לא פעיל');
         }
         if (filterBy === 'pendingStatus') {
-            return assets.filter((asset: Asset) => asset.contractStatus === 'ממתין לאישור');
+            return assignedAssets.filter(asset => asset.contractStatus === 'ממתין לאישור');
+        }
+        if (filterBy === 'bankBeinleumi') {
+            return assignedAssets.filter(asset => asset.bankName === 'הבינלאומי');
+        }
+        if (filterBy === 'bankMasad') {
+            return assignedAssets.filter(asset => asset.bankName === 'מסד');
         }
     }
 
 
     const showAssets = (dataSet) => {
-        const filterBy = {
-            filteredAssets: dataSet.assets,
-            he: dataSet.he
-        };
-        navigate('/table', { state: filterBy });
+        const { he, assignedAssets } = dataSet;
+        if (he === 'הוראות תשלום מפורטות' || he === 'הוראות תשלום מרוכזות') {
+            return;
+        }
+        const routeState = { he, assignedAssets };
+        navigate('/table', { state: routeState });
     }
 
 
     return (
         <section className="tiles-container">
-            {filteredAssetDataSets.length ?
+            {assignedAssetsDataSets.length ?
                 <>
-                    {filteredAssetDataSets.map(dataSet => (
+                    {assignedAssetsDataSets.map(dataSet => (
                         <div onClick={(ev) => showAssets(dataSet)} key={dataSet.en}>
                             <strong>{dataSet.he}</strong>
-                            <h4>({dataSet.assets.length})</h4>
+                            <h4>({dataSet.assignedAssets.length})</h4>
                         </div>
                     ))}
                 </> : null

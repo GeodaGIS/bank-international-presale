@@ -3,7 +3,7 @@
     margin: 10px;
     border: 1px solid;
     overflow: scroll;
-    max-height: 83vh;
+    max-height: 80vh;
 }
 
 .table-container .p-datatable-table {

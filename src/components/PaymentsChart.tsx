@@ -55,7 +55,7 @@ export const PaymentsChart = (props) => {
     const getOptions = () => {
         return {
             maintainAspectRatio: false,
-            aspectRatio: 0.38
+            aspectRatio: 0.65
         };
     }
 

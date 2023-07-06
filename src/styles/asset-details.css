@@ -5,7 +5,7 @@
 
 .asset-details-container h1 {
     font-size: 45px;
-    margin-left: 55px;
+    margin: 5px 0 20px 55px;
 }
 
 .entries-container {
@@ -59,7 +59,7 @@
 }
 
 .details-table-main-container {
-    width: 50%;
+    width: 48%;
 }
 
 .details-table-main-container .p-tabmenu-nav {
@@ -94,7 +94,7 @@
     margin: 0 10px;
     border: 1px solid;
     overflow: scroll;
-    max-height: 55vh;
+    max-height: 38vh;
 }
 
 .details-table-container .p-datatable-table {
@@ -145,5 +145,5 @@
 } */
 
 .payments-chart-container {
-    width: 50%;
+    width: 52%;
 }

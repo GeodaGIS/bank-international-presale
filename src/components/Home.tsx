@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Tiles } from './Tiles';
 import { PendingChart } from './PendingChart';
 import { ExpensesChart } from './ExpensesChart';

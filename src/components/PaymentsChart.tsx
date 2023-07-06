@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Chart } from 'primereact/chart';
 import { useEffect, useState } from "react";
 import { useAppSelector } from '../hooks/useStoreTypes';

@@ -49,7 +49,7 @@ function getFieldsMap() {
 }
 
 
-function getEntityFieldsMap(entityName) {
+function getEntityFieldsMap(entityName: string) {
     if (entityName === 'contract') {
         return {
             rentContractId: 'חוזה שכירות',

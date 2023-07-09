@@ -33,11 +33,11 @@ function getInitialPayments() {
             supplier: 'יעל שמחון',
             billNum: 525574,
             aim: 'ניהול',
-            docDate: 1646908299000,
-            payDate: 1646908299000,
+            docDate: 1672477141000,
+            payDate: 1672477141000,
             details: 'דמי ניהול',
             coin: 'שקל',
-            total: 8000
+            total: 2800
         },
         {
             id: 'p_5471',
@@ -46,11 +46,11 @@ function getInitialPayments() {
             supplier: 'חניון המילניום',
             billNum: 29341,
             aim: 'חניה',
-            docDate: 1683711099000,
-            payDate: 1683711099000,
+            docDate: 1704013141000,
+            payDate: 1704013141000,
             details: 'חניונים',
             coin: 'דולר',
-            total: 10000
+            total: 900
         },
         {
             id: 'p_9251',
@@ -63,7 +63,7 @@ function getInitialPayments() {
             payDate: 1641033099000,
             details: 'דמי ניהול רבעון 1',
             coin: 'שקל',
-            total: 2500
+            total: 600
         },
         {
             id: 'p_9252',
@@ -76,7 +76,7 @@ function getInitialPayments() {
             payDate: 1648805499000,
             details: 'דמי ניהול רבעון 2',
             coin: 'שקל',
-            total: 2500
+            total: 900
         },
         {
             id: 'p_9253',
@@ -89,7 +89,7 @@ function getInitialPayments() {
             payDate: 1656667899000,
             details: 'דמי ניהול רבעון 3',
             coin: 'שקל',
-            total: 2500
+            total: 300
         },
         {
             id: 'p_9254',
@@ -102,7 +102,7 @@ function getInitialPayments() {
             payDate: 1664616699000,
             details: 'דמי ניהול רבעון 4',
             coin: 'שקל',
-            total: 2500
+            total: 1400
         },
         {
             id: 'p_6211',
@@ -115,7 +115,7 @@ function getInitialPayments() {
             payDate: 1672569099000,
             details: 'חניונים',
             coin: 'דולר',
-            total: 1200
+            total: 2100
         },
         {
             id: 'p_6212',
@@ -128,7 +128,7 @@ function getInitialPayments() {
             payDate: 1680341499000,
             details: 'חניונים',
             coin: 'דולר',
-            total: 1200
+            total: 2100
         },
         {
             id: 'p_6213',
@@ -141,7 +141,7 @@ function getInitialPayments() {
             payDate: 1688203899000,
             details: 'חניונים',
             coin: 'דולר',
-            total: 1200
+            total: 2100
         },
         {
             id: 'p_6214',
@@ -154,7 +154,7 @@ function getInitialPayments() {
             payDate: 1696152699000,
             details: 'חניונים',
             coin: 'דולר',
-            total: 1200
+            total: 2100
         },
         {
             id: 'p_8241',
@@ -167,7 +167,7 @@ function getInitialPayments() {
             payDate: 1641033099000,
             details: 'דמי ניהול רבעון 1',
             coin: 'שקל',
-            total: 3000
+            total: 1900
         },
         {
             id: 'p_8242',
@@ -180,7 +180,7 @@ function getInitialPayments() {
             payDate: 1648805499000,
             details: 'דמי ניהול רבעון 2',
             coin: 'שקל',
-            total: 3000
+            total: 2200
         },
         {
             id: 'p_8243',
@@ -193,7 +193,7 @@ function getInitialPayments() {
             payDate: 1656667899000,
             details: 'דמי ניהול רבעון 3',
             coin: 'שקל',
-            total: 3000
+            total: 3400
         },
         {
             id: 'p_8244',
@@ -206,7 +206,7 @@ function getInitialPayments() {
             payDate: 1664616699000,
             details: 'דמי ניהול רבעון 4',
             coin: 'שקל',
-            total: 3000
+            total: 2000
         },
         {
             id: 'p_4821',
@@ -219,7 +219,7 @@ function getInitialPayments() {
             payDate: 1641810699000,
             details: 'שכירות ינואר',
             coin: 'שקל',
-            total: 5200
+            total: 1500
         },
         {
             id: 'p_4822',
@@ -232,7 +232,7 @@ function getInitialPayments() {
             payDate: 1644489099000,
             details: 'שכירות פברואר',
             coin: 'שקל',
-            total: 5200
+            total: 1500
         },
         {
             id: 'p_4823',
@@ -245,7 +245,7 @@ function getInitialPayments() {
             payDate: 1646908299000,
             details: 'שכירות מרץ',
             coin: 'שקל',
-            total: 5200
+            total: 1500
         },
         {
             id: 'p_4824',
@@ -258,7 +258,7 @@ function getInitialPayments() {
             payDate: 1649583099000,
             details: 'שכירות אפריל',
             coin: 'שקל',
-            total: 5200
+            total: 1500
         },
         {
             id: 'p_4825',
@@ -271,7 +271,7 @@ function getInitialPayments() {
             payDate: 1652175099000,
             details: 'שכירות מאי',
             coin: 'שקל',
-            total: 5200
+            total: 2500
         },
         {
             id: 'p_4826',
@@ -284,7 +284,7 @@ function getInitialPayments() {
             payDate: 1654853499000,
             details: 'שכירות יוני',
             coin: 'שקל',
-            total: 5200
+            total: 2500
         },
         {
             id: 'p_4827',
@@ -297,7 +297,7 @@ function getInitialPayments() {
             payDate: 1657445499000,
             details: 'שכירות יולי',
             coin: 'שקל',
-            total: 5200
+            total: 2500
         },
         {
             id: 'p_4828',
@@ -310,7 +310,7 @@ function getInitialPayments() {
             payDate: 1660123899000,
             details: 'שכירות אוגוסט',
             coin: 'שקל',
-            total: 5200
+            total: 2500
         },
         {
             id: 'p_4829',
@@ -323,7 +323,7 @@ function getInitialPayments() {
             payDate: 1662802299000,
             details: 'שכירות ספטמבר',
             coin: 'שקל',
-            total: 5200
+            total: 2500
         },
         {
             id: 'p_48210',
@@ -336,7 +336,7 @@ function getInitialPayments() {
             payDate: 1665394299000,
             details: 'שכירות אוקטובר',
             coin: 'שקל',
-            total: 5200
+            total: 2500
         },
         {
             id: 'p_48211',
@@ -349,7 +349,7 @@ function getInitialPayments() {
             payDate: 1668076299000,
             details: 'שכירות נובמבר',
             coin: 'שקל',
-            total: 5200
+            total: 2500
         },
         {
             id: 'p_48212',
@@ -362,7 +362,7 @@ function getInitialPayments() {
             payDate: 1670668299000,
             details: 'שכירות דצמבר',
             coin: 'שקל',
-            total: 5200
+            total: 2500
         },
         {
             id: 'p_7241',
@@ -375,7 +375,7 @@ function getInitialPayments() {
             payDate: 1673346699000,
             details: 'שכירות ינואר',
             coin: 'שקל',
-            total: 6000
+            total: 3600
         },
         {
             id: 'p_7242',
@@ -388,7 +388,7 @@ function getInitialPayments() {
             payDate: 1676025099000,
             details: 'שכירות פברואר',
             coin: 'שקל',
-            total: 6000
+            total: 3600
         },
         {
             id: 'p_7243',
@@ -401,7 +401,7 @@ function getInitialPayments() {
             payDate: 1678444299000,
             details: 'שכירות מרץ',
             coin: 'שקל',
-            total: 6000
+            total: 3600
         },
         {
             id: 'p_7244',
@@ -414,7 +414,7 @@ function getInitialPayments() {
             payDate: 1681119099000,
             details: 'שכירות אפריל',
             coin: 'שקל',
-            total: 6000
+            total: 3600
         },
         {
             id: 'p_7245',
@@ -427,7 +427,7 @@ function getInitialPayments() {
             payDate: 1683711099000,
             details: 'שכירות מאי',
             coin: 'שקל',
-            total: 6000
+            total: 3600
         },
         {
             id: 'p_7246',
@@ -440,7 +440,7 @@ function getInitialPayments() {
             payDate: 1686389499000,
             details: 'שכירות יוני',
             coin: 'שקל',
-            total: 6000
+            total: 3600
         },
         {
             id: 'p_7247',
@@ -453,7 +453,7 @@ function getInitialPayments() {
             payDate: 1688981499000,
             details: 'שכירות יולי',
             coin: 'שקל',
-            total: 6000
+            total: 3600
         },
         {
             id: 'p_7248',
@@ -466,7 +466,7 @@ function getInitialPayments() {
             payDate: 1691659899000,
             details: 'שכירות אוגוסט',
             coin: 'שקל',
-            total: 6000
+            total: 3600
         },
         {
             id: 'p_7249',
@@ -479,7 +479,7 @@ function getInitialPayments() {
             payDate: 1694338299000,
             details: 'שכירות ספטמבר',
             coin: 'שקל',
-            total: 6000
+            total: 3600
         },
         {
             id: 'p_72410',
@@ -492,7 +492,7 @@ function getInitialPayments() {
             payDate: 1696930299000,
             details: 'שכירות אוקטובר',
             coin: 'שקל',
-            total: 6000
+            total: 3600
         },
         {
             id: 'p_72411',
@@ -505,7 +505,7 @@ function getInitialPayments() {
             payDate: 1699612299000,
             details: 'שכירות נובמבר',
             coin: 'שקל',
-            total: 6000
+            total: 3600
         },
         {
             id: 'p_72412',
@@ -518,7 +518,7 @@ function getInitialPayments() {
             payDate: 1702204299000,
             details: 'שכירות דצמבר',
             coin: 'שקל',
-            total: 6000
+            total: 3600
         },
     ]
 }

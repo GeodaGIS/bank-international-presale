@@ -23,12 +23,12 @@ export const AssetDetails = () => {
     const [currAsset, setCurrAsset] = useState(null);
     const [fields, setFields] = useState([]);
     const navItems = [
-        { label: 'כל החוזים' },
         { label: 'תשלומי עבר' },
         { label: 'תחזית תשלומים' },
-        { label: 'תחזית לרבעון הקרוב' }
+        { label: 'תחזית לרבעון הקרוב' },
+        { label: 'כל החוזים' }
     ];
-    const [activeTab, setActiveTab] = useState({ label: 'כל החוזים', index: 0 });
+    const [activeTab, setActiveTab] = useState({ label: 'תשלומי עבר', index: 0 });
     const [featuresToShowInTable, setFeaturesToShowInTable] = useState([]);
     const [selectedFeatures, setSelectedFeatures] = useState([]);
 
@@ -238,8 +238,6 @@ export const AssetDetails = () => {
                                 </DataTable>
                             </div>
                         </main>
-
-                        <PaymentsChart currAsset={currAsset} />
 
                     </section>
 

@@ -5,7 +5,7 @@
 
 .asset-details-container h1 {
     font-size: 45px;
-    margin: 5px 0 20px 55px;
+    margin: 20px 0 20px 55px;
 }
 
 .entries-container {
@@ -59,15 +59,14 @@
 }
 
 .details-table-main-container {
-    width: 48%;
+    width: 100%;
 }
 
 .details-table-main-container .p-tabmenu-nav {
     background: none;
     border: none;
-    width: 100%;
+    width: 25%;
     margin: 10px 0 0;
-    justify-content: space-between;
 }
 
 .details-table-main-container .p-tabmenu-nav .p-tabmenuitem {
@@ -84,7 +83,7 @@
 
 .details-table-container {
     /* background: whitesmoke; */
-    box-shadow: inset 0px 0px 10px 8px #c1c1c1b8;
+    /* box-shadow: inset 0px 0px 10px 8px #c1c1c1b8; */
     flex-grow: 2;
     height: 100%;
 }
@@ -94,7 +93,7 @@
     margin: 0 10px;
     border: 1px solid;
     overflow: scroll;
-    max-height: 38vh;
+    max-height: 50vh;
 }
 
 .details-table-container .p-datatable-table {
@@ -143,7 +142,3 @@
 .details-table-container header .table-search-container {
     margin-left: 130px;
 } */
-
-.payments-chart-container {
-    width: 52%;
-}

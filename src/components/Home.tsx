@@ -6,6 +6,7 @@ import { Knobs } from './Knobs';
 import { PreviewTable } from './PreviewTable';
 import { TypesChart } from './TypesChart';
 import '../styles/home.css';
+import { PaymentsChart } from './PaymentsChart';
 
 
 export const Home = () => {
@@ -21,6 +22,7 @@ export const Home = () => {
             <div className='lower-container'>
                 {/* <PreviewTable /> */}
                 <Tiles />
+                <PaymentsChart />
                 <PendingChart />
             </div>
         </div>

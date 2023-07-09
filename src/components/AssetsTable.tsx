@@ -8,21 +8,21 @@ import { UtilService } from '../services/UtilService';
 import { loadAssets } from '../store/actions/assetActions';
 import { loadContracts } from '../store/actions/contractActions';
 import { Field } from '../types/Field';
-import '../styles/table.css';
 import { useReadable } from '../hooks/useReadable';
 import { Export } from './Export';
 import { useStatusTag } from '../hooks/useStatusTag';
 import { TableSearch } from './TableSearch';
+import '../styles/assets-table.css';
 
 
-export const Table = () => {
+export const AssetsTable = () => {
     const dispatch = useAppDispatch();
     const location = useLocation();
+    const navigate = useNavigate();
     const { assets } = useAppSelector(state => state.assetModule);
     const { contracts } = useAppSelector(state => state.contractModule);
     const [readableAssets, setReadableAssets] = useState([]);
     const [selectedAssets, setSelectedAssets] = useState([]);
-    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -77,8 +77,8 @@ export const Table = () => {
 
 
     const setAllAssets = () => {
-        const { assignedAssets } = location.state;
-        const readableAssets = useReadable(assignedAssets, 'asset');
+        const { entities } = location.state;
+        const readableAssets = useReadable(entities, 'asset');
         setReadableAssets(readableAssets);
     }
 
@@ -95,7 +95,7 @@ export const Table = () => {
 
 
     return (
-        <div className='table-container'>
+        <div className='assets-table-container'>
             {readableAssets.length ? (
                 <>
                     <header>

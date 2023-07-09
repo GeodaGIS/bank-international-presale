@@ -11,66 +11,67 @@ export const Tiles = () => {
     const navigate = useNavigate();
     const { assets } = useAppSelector(state => state.assetModule);
     const { contracts } = useAppSelector(state => state.contractModule);
-    const [assignedAssetsDataSets, setAssignedAssetsDataSets] = useState<any[]>([]);
+    const { payments } = useAppSelector(state => state.paymentModule);
+    const [entitiesDataSets, setEntitiesDataSets] = useState<any[]>([]);
     const deadLine = 1704059999000; // 31.12.23;
 
 
     useEffect(() => {
-        if (assets.length && contracts.length) {
-            setAssignedAssetsDataSets([
+        if (assets.length && contracts.length && payments.length) {
+            setEntitiesDataSets([
                 {
                     en: 'all',
                     he: 'כל הנכסים',
-                    assignedAssets: getAssignedAssets('all')
+                    entities: getAssignedAssets('all')
                 },
                 {
                     en: 'rentEndingDate',
                     he: 'סיום שכירות השנה',
-                    assignedAssets: getAssignedAssets('rentEndingDate')
+                    entities: getAssignedAssets('rentEndingDate')
                 },
                 {
                     en: 'closeExitPoints',
                     he: 'נקודות יציאה קרובות',
-                    assignedAssets: getAssignedAssets('closeExitPoints')
+                    entities: getAssignedAssets('closeExitPoints')
                 },
                 {
                     en: 'activeStatus',
                     he: 'פעילים',
-                    assignedAssets: getAssignedAssets('activeStatus')
+                    entities: getAssignedAssets('activeStatus')
                 },
                 {
                     en: 'nonActiveStatus',
                     he: 'לא פעילים',
-                    assignedAssets: getAssignedAssets('nonActiveStatus')
+                    entities: getAssignedAssets('nonActiveStatus')
                 },
                 {
                     en: 'pendingStatus',
                     he: 'ממתינים לאישור',
-                    assignedAssets: getAssignedAssets('pendingStatus')
+                    entities: getAssignedAssets('pendingStatus')
                 },
                 {
                     en: 'bankBeinleumi',
                     he: 'הבנק הבינלאומי',
-                    assignedAssets: getAssignedAssets('bankBeinleumi')
+                    entities: getAssignedAssets('bankBeinleumi')
                 },
                 {
                     en: 'bankMasad',
                     he: 'בנק מסד',
-                    assignedAssets: getAssignedAssets('bankMasad')
+                    entities: getAssignedAssets('bankMasad')
                 },
                 {
-                    en: 'x',
+                    en: 'unitedPayments',
                     he: 'הוראות תשלום מרוכזות',
-                    assignedAssets: () => console.log('y')
+                    entities: getPayments('unitedPayments')
                 },
                 {
                     en: 'y',
                     he: 'הוראות תשלום מפורטות',
-                    assignedAssets: () => console.log('x')
-                },
-            ])
+                    entities: () => console.log('x')
+                }
+            ]);
         }
-    }, [assets, contracts])
+    }, [assets, contracts, payments])
 
 
     const getAssignedAssets = (filterBy: string) => {
@@ -102,24 +103,33 @@ export const Tiles = () => {
     }
 
 
-    const showAssets = (dataSet) => {
-        const { he, assignedAssets } = dataSet;
-        if (he === 'הוראות תשלום מפורטות' || he === 'הוראות תשלום מרוכזות') {
+    const getPayments = (tableType) => {
+        if (tableType === 'unitedPayments') {
+            return payments;
+        }
+    }
+
+
+    const showEntities = (dataSet) => {
+        const { he, entities } = dataSet;
+        if (he === 'הוראות תשלום מפורטות') {
             return;
         }
-        const routeState = { he, assignedAssets };
-        navigate('/table', { state: routeState });
+        const isPaymentsTable = ((he === 'הוראות תשלום מרוכזות') || (he === 'הוראות תשלום מפורטות'));
+        let route = isPaymentsTable ? '/payments-table' : '/assets-table';
+        const routeState = { he, entities };
+        navigate(route, { state: routeState });
     }
 
 
     return (
         <section className="tiles-container">
-            {assignedAssetsDataSets.length ?
+            {entitiesDataSets.length ?
                 <>
-                    {assignedAssetsDataSets.map(dataSet => (
-                        <div onClick={(ev) => showAssets(dataSet)} key={dataSet.en}>
+                    {entitiesDataSets.map(dataSet => (
+                        <div onClick={(ev) => showEntities(dataSet)} key={dataSet.en}>
                             <strong>{dataSet.he}</strong>
-                            <h4>({dataSet.assignedAssets.length})</h4>
+                            <h4>({dataSet.entities.length})</h4>
                         </div>
                     ))}
                 </> : null

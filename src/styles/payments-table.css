@@ -1,0 +1,67 @@
+.payments-table-container .p-datatable {
+    font-size: 16px;
+    margin: 10px;
+    border: 1px solid;
+    overflow: scroll;
+    max-height: 80vh;
+}
+
+.payments-table-container .p-datatable-table {
+    border-spacing: 2px 0;
+}
+
+.payments-table-container .p-datatable .p-datatable-wrapper {
+    overflow: initial;
+}
+
+.payments-table-container .p-datatable .p-datatable-thead>tr>th {
+    color: #0f3c8f;
+    background: aliceblue;
+    text-align: center;
+    padding: 15px;
+}
+
+.payments-table-container .p-datatable .p-column-header-content {
+    display: flex;
+    justify-content: center;
+}
+
+.payments-table-container .p-datatable .p-datatable-tbody>tr>td {
+    text-align: center;
+}
+
+.payments-table-container .p-datatable .p-sortable-column .p-sortable-column-icon {
+    /* margin-left: 0; */
+    margin: 0 3px -5px 0;
+}
+
+.payments-table-container {
+    /* text-align: center; */
+}
+
+.payments-table-container header {
+    /* background-color: rgb(177, 134, 218); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
+    padding: 0 2px;
+}
+
+.payments-table-container header h2 {
+    margin: 0;
+}
+
+.payments-table-container header .table-search-container {
+    margin-left: 250px;
+}
+
+.checkbox-column .p-column-header-content {
+    /* width: 82%; */
+}
+
+.p-datatable .p-datatable-footer {
+    display: flex;
+    justify-content: end;
+    padding-left: 150px;
+}

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+// @ts-nocheck
+import { useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/useStoreTypes";
 import { loadPayments } from "../store/actions/paymentActions";
 import { useLocation } from "react-router-dom";
@@ -60,29 +61,35 @@ export const PaymentsTable = () => {
 
     const setAllPayments = () => {
         const { entities } = location.state;
-        let readablePayments = useReadable(entities, 'payment');
-        readablePayments = readablePayments.map(readablePayment => {
-            const contract = contracts.find(contract => contract.paymentsIds.includes(readablePayment.id));
-            return {
-                contractNum: contract.rentContractId,
-                ...readablePayment
-            }
-        });
+        const readablePayments = useReadable(entities, 'payment');
         setReadablePayments(readablePayments);
     }
 
 
-    const getFields = () => {
-        // const fieldsMap = UtilService.getEntityFieldsMap('payment');
-        const fieldsMap = {
-            contractNum: 'מספר חוזה',
-            num: 'מספר הוראת תשלום',
-            frequency: 'תדירות',
-            supplier: 'ספק',
-            aim: 'תשלום עבור',
-            details: 'פרטים',
-            total: 'סה"כ לתשלום'
-        };
+    const getFields = ({ state }) => {
+        let fieldsMap = null;
+        if (state.he === 'הוראות תשלום מרוכזות') {
+            fieldsMap = {
+                contractNum: 'מספר חוזה',
+                num: 'מספר הוראת תשלום',
+                frequency: 'תדירות',
+                supplier: 'ספק',
+                aim: 'תשלום עבור',
+                details: 'פרטים',
+                total: 'סה"כ לתשלום'
+            };
+        }
+        if (state.he === 'הוראות תשלום מפורטות') {
+            fieldsMap = {
+                contractNum: 'מספר חוזה',
+                type: 'סוג הוראת תשלום',
+                debits: 'חובה',
+                credits: 'זכות',
+                site: 'אתר',
+                branch: 'סניף',
+                ...UtilService.getEntityFieldsMap('payment')
+            }
+        }
         const fieldsNames = Object.keys(fieldsMap);
         return fieldsNames.map(fieldName => {
             return {
@@ -93,7 +100,7 @@ export const PaymentsTable = () => {
     }
 
 
-    const fields = getFields();
+    const fields = useMemo(() => getFields(location), [location]);
 
 
     return (

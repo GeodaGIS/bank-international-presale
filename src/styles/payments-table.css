@@ -63,5 +63,5 @@
 .p-datatable .p-datatable-footer {
     display: flex;
     justify-content: end;
-    padding-left: 150px;
+    /* padding-left: 160px; */
 }

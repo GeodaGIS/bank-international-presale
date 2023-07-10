@@ -62,12 +62,12 @@ export const Tiles = () => {
                 {
                     en: 'unitedPayments',
                     he: 'הוראות תשלום מרוכזות',
-                    entities: getPayments('unitedPayments')
+                    entities: getUnitedPayments()
                 },
                 {
-                    en: 'y',
+                    en: 'detailedPayments',
                     he: 'הוראות תשלום מפורטות',
-                    entities: () => console.log('x')
+                    entities: getDetailedPayments()
                 }
             ]);
         }
@@ -103,18 +103,49 @@ export const Tiles = () => {
     }
 
 
-    const getPayments = (tableType) => {
-        if (tableType === 'unitedPayments') {
-            return payments;
-        }
+    const getUnitedPayments = () => {
+        return payments.map(payment => {
+            const contract = contracts.find(contract => contract.paymentsIds.includes(payment.id));
+            return {
+                contractNum: contract.rentContractId,
+                ...payment
+            }
+        });
+    }
+
+
+    const getDetailedPayments = () => {
+        return payments.reduce((acc, payment) => {
+            const contract = contracts.find(contract => contract.paymentsIds.includes(payment.id));
+            const asset = assets.find(asset => asset.contractsIds.includes(contract.id));
+            const debitPayment = {
+                contractNum: contract.rentContractId,
+                type: 'הוצאה',
+                debits: payment.total,
+                credits: null,
+                site: asset.bankName,
+                branch: asset.branchName,
+                ...payment,
+                id: `${payment.id}_1`
+            };
+            const creditPayment = {
+                contractNum: contract.rentContractId,
+                type: 'זיכוי (ספק)',
+                debits: null,
+                credits: payment.total,
+                site: asset.bankName,
+                branch: asset.branchName,
+                ...payment,
+                id: `${payment.id}_2`
+            };
+            acc.push(debitPayment, creditPayment);
+            return acc;
+        }, []);
     }
 
 
     const showEntities = (dataSet) => {
         const { he, entities } = dataSet;
-        if (he === 'הוראות תשלום מפורטות') {
-            return;
-        }
         const isPaymentsTable = ((he === 'הוראות תשלום מרוכזות') || (he === 'הוראות תשלום מפורטות'));
         let route = isPaymentsTable ? '/payments-table' : '/assets-table';
         const routeState = { he, entities };

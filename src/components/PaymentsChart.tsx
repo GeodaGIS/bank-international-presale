@@ -126,7 +126,7 @@ export const PaymentsChart = () => {
     const getOptions = () => {
         return {
             maintainAspectRatio: false,
-            aspectRatio: 0.7,
+            aspectRatio: 0.56,
             scales: {
                 y: {
                     beginAtZero: true
@@ -134,6 +134,13 @@ export const PaymentsChart = () => {
             },
             animation: {
                 duration: 0
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'השוואת הוצאות שוטפות מול שנה שעברה',
+                    font: { size: 16 }
+                }
             }
         };
     }

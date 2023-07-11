@@ -39,7 +39,7 @@ export const PendingChart = () => {
                 label: 'חוזים בסבב אישורים',
                 data: approversFrequencies,
                 backgroundColor: ['#163771'],
-                barThickness: 30
+                barThickness: 35
             }]
         }
     }
@@ -49,7 +49,7 @@ export const PendingChart = () => {
         return {
             indexAxis: 'y',
             maintainAspectRatio: false,
-            aspectRatio: 0.7,
+            aspectRatio: 0.56,
             scales: {
                 x: {
                     ticks: { stepSize: 1 },

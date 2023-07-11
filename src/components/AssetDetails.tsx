@@ -142,7 +142,10 @@ export const AssetDetails = () => {
             {currAsset &&
                 <main className="asset-details-container">
 
-                    <h1>נכס</h1>
+                    <article>
+                        <h1>{currAsset.branchName}</h1>
+                        <h1>{currAsset.branchNum}</h1>
+                    </article>
 
                     <section className="entries-container">
                         {(currAsset.branchNum !== 1) ?
@@ -156,12 +159,12 @@ export const AssetDetails = () => {
                             : <aside style={{ width: '25px' }}></aside>
                         }
                         <div>
-                            <h2>{'מספר סניף'}</h2>
-                            <h3>{currAsset.branchNum}</h3>
-                        </div>
-                        <div>
                             <h2>{'שם סניף'}</h2>
                             <h3>{currAsset.branchName}</h3>
+                        </div>
+                        <div>
+                            <h2>{'מספר סניף'}</h2>
+                            <h3>{currAsset.branchNum}</h3>
                         </div>
                         <div>
                             <h2>{'בנק'}</h2>

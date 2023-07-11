@@ -46,12 +46,12 @@ export const Export = (props) => {
         const fieldsAliases = fields.map(field => field.alias);
         const recordsToExport = records.map(record => {
             const recordEntries = Object.entries(record);
-            return recordEntries.reduce((newAsset, [key, value]) => {
+            return recordEntries.reduce((newEntity, [key, value]) => {
                 const isFieldToExport = fieldsNames.includes(key);
                 if (isFieldToExport) {
-                    newAsset[key] = value;
+                    newEntity[key] = value;
                 }
-                return newAsset;
+                return newEntity;
             }, {});
         });
         const recordsToExportVals = recordsToExport.map(record => Object.values(record));

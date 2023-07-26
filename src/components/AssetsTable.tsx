@@ -39,7 +39,7 @@ export const AssetsTable = () => {
         if (assets.length && contracts.length) {
             setAllAssets();
         }
-    }, [assets, contracts])
+    }, [assets, contracts, location.state])
 
 
     const getFields = () => {
@@ -78,7 +78,12 @@ export const AssetsTable = () => {
 
     const setAllAssets = () => {
         const { entities } = location.state;
-        const readableAssets = useReadable(entities, 'asset');
+        let readableAssets = [];
+        if ('isByGenSearch' in location.state) {
+            readableAssets = entities;
+        } else {
+            readableAssets = useReadable(entities, 'asset');
+        }
         setReadableAssets(readableAssets);
     }
 

@@ -61,13 +61,38 @@ export const Tiles = () => {
                 },
                 {
                     en: 'unitedPayments',
-                    he: 'הוראות תשלום מרוכזות',
+                    he: 'הפקת הוראת תשלום מרוכזת',
                     entities: getUnitedPayments()
                 },
                 {
                     en: 'detailedPayments',
-                    he: 'הוראות תשלום מפורטות',
+                    he: 'העברת ממשק',
                     entities: getDetailedPayments()
+                },
+                {
+                    en: 'newContract',
+                    he: 'חוזה חדש',
+                    entities: []
+                },
+                {
+                    en: 'paymentsProducing',
+                    he: 'הפקת הוראות תשלום',
+                    entities: []
+                },
+                {
+                    en: 'united',
+                    he: 'מרוכזות',
+                    entities: []
+                },
+                {
+                    en: 'reports',
+                    he: 'דוחות',
+                    entities: []
+                },
+                {
+                    en: 'ongoingPayments',
+                    he: 'תשלומים שוטפים',
+                    entities: []
                 }
             ]);
         }
@@ -108,7 +133,8 @@ export const Tiles = () => {
             const contract = contracts.find(contract => contract.paymentsIds.includes(payment.id));
             return {
                 contractNum: contract.rentContractId,
-                ...payment
+                ...payment,
+                num: (Date.now() > payment.payDate) ? payment.num : null
             }
         });
     }
@@ -126,7 +152,8 @@ export const Tiles = () => {
                 site: asset.bankName,
                 branch: asset.branchName,
                 ...payment,
-                id: `${payment.id}_1`
+                id: `${payment.id}_1`,
+                num: (Date.now() > payment.payDate) ? payment.num : null
             };
             const creditPayment = {
                 contractNum: contract.rentContractId,
@@ -136,7 +163,8 @@ export const Tiles = () => {
                 site: asset.bankName,
                 branch: asset.branchName,
                 ...payment,
-                id: `${payment.id}_2`
+                id: `${payment.id}_2`,
+                num: (Date.now() > payment.payDate) ? payment.num : null
             };
             acc.push(debitPayment, creditPayment);
             return acc;
@@ -144,10 +172,13 @@ export const Tiles = () => {
     }
 
 
-    const showEntities = (dataSet) => {
+    const showEntities = (dataSet, idx) => {
+        if (idx >= 10) {
+            return;
+        }
         const { he, entities } = dataSet;
-        const isPaymentsTable = ((he === 'הוראות תשלום מרוכזות') || (he === 'הוראות תשלום מפורטות'));
-        let route = isPaymentsTable ? '/payments-table' : '/assets-table';
+        const isPaymentsTable = ((he === 'הפקת הוראת תשלום מרוכזת') || (he === 'העברת ממשק'));
+        const route = isPaymentsTable ? '/payments-table' : '/assets-table';
         const routeState = { he, entities };
         navigate(route, { state: routeState });
     }
@@ -157,8 +188,12 @@ export const Tiles = () => {
         <section className="tiles-container">
             {entitiesDataSets.length ?
                 <>
-                    {entitiesDataSets.map(dataSet => (
-                        <div onClick={(ev) => showEntities(dataSet)} key={dataSet.en}>
+                    {entitiesDataSets.map((dataSet, idx) => (
+                        <div
+                            onClick={() => showEntities(dataSet, idx)}
+                            className={dataSet.en}
+                            key={dataSet.en}
+                        >
                             <strong>{dataSet.he}</strong>
                             <h4>({dataSet.entities.length})</h4>
                         </div>

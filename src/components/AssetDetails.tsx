@@ -23,12 +23,15 @@ export const AssetDetails = () => {
     const [currAsset, setCurrAsset] = useState(null);
     const [fields, setFields] = useState([]);
     const navItems = [
+        { label: 'כל התשלומים' },
         { label: 'תשלומי עבר' },
         { label: 'תחזית תשלומים' },
         { label: 'תחזית לרבעון הקרוב' },
-        { label: 'כל החוזים' }
+        { label: 'כל החוזים' },
+        { label: 'תשריטים' },
+        { label: 'מסמכים נלווים' },
     ];
-    const [activeTab, setActiveTab] = useState({ label: 'תשלומי עבר', index: 0 });
+    const [activeTab, setActiveTab] = useState({ label: 'כל התשלומים', index: 0 });
     const [featuresToShowInTable, setFeaturesToShowInTable] = useState([]);
     const [selectedFeatures, setSelectedFeatures] = useState([]);
 
@@ -51,8 +54,15 @@ export const AssetDetails = () => {
             setAllContracts(assetContracts);
         } else {
             setFields(getFields('payment'));
-            const allCurrPayments = payments.filter(payment => assetContracts[0].paymentsIds.includes(payment.id));
+            let allCurrPayments = payments.filter(payment => assetContracts[0].paymentsIds.includes(payment.id));
             if (allCurrPayments.length) {
+                allCurrPayments = allCurrPayments.map(payment => ({
+                    ...payment,
+                    num: (Date.now() > payment.payDate) ? payment.num : null
+                }));
+                if (activeTab.label === 'כל התשלומים') {
+                    setPaymentsInTable(allCurrPayments);
+                }
                 if (activeTab.label === 'תשלומי עבר') {
                     setPastPayments(allCurrPayments);
                 }
@@ -61,6 +71,9 @@ export const AssetDetails = () => {
                 }
                 if (activeTab.label === 'תחזית לרבעון הקרוב') {
                     setNextQuarterPayments(allCurrPayments);
+                }
+                if (activeTab.label === 'תשריטים' || activeTab.label === 'מסמכים נלווים') {
+                    setFeaturesToShowInTable([]);
                 }
             } else {
                 setFeaturesToShowInTable([]);
@@ -90,9 +103,9 @@ export const AssetDetails = () => {
     const setNextQuarterPayments = (allCurrPayments) => {
         const threeMonthsPeriod = 7862400000;
         const nexQuarterPayments = allCurrPayments.filter(payment => {
-            const futurePayment = Date.now() < payment.payDate;
+            const isFuturePayment = Date.now() < payment.payDate;
             const inLessThanThreeMonths = (Date.now() + threeMonthsPeriod) > payment.payDate;
-            return (futurePayment && inLessThanThreeMonths);
+            return (isFuturePayment && inLessThanThreeMonths);
         });
         setPaymentsInTable(nexQuarterPayments);
     }

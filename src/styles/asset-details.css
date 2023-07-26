@@ -73,10 +73,14 @@
     background: none;
     border: none;
     margin: 10px 0 0;
+    display: flex;
+    gap: 5px;
 }
 
 .details-table-main-container .p-tabmenu-nav .p-tabmenuitem {
     background: none;
+    border: 1px solid;
+    border-bottom: none;
 }
 
 .details-table-main-container .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
@@ -148,3 +152,11 @@
 .details-table-container header .table-search-container {
     margin-left: 130px;
 } */
+
+.details-table-main-container .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
+    background: #c9d3fc85;
+}
+
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem:not(.p-highlight):not(.p-disabled):hover .p-menuitem-link {
+    background: #c9d3fc85;
+}

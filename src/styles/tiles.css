@@ -1,7 +1,7 @@
 .tiles-container {
     background: #c8c8c8;
     display: grid;
-    grid-template-columns: repeat(2, 150px);
+    grid-template-columns: repeat(3, 150px);
     grid-template-rows: repeat(5, 109px);
     width: fit-content;
     height: fit-content;
@@ -30,4 +30,59 @@
 
 .tiles-container div h4 {
     margin: 3px;
+}
+
+.all,
+.rentEndingDate,
+.closeExitPoints,
+.activeStatus,
+.nonActiveStatus {
+    grid-column: 1;
+}
+
+.pendingStatus,
+.bankBeinleumi,
+.bankMasad,
+.unitedPayments,
+.detailedPayments {
+    grid-column: 2;
+}
+
+.newContract,
+.paymentsProducing,
+.united,
+.reports,
+.ongoingPayments {
+    grid-column: 3;
+}
+
+
+.all,
+.pendingStatus,
+.newContract {
+    grid-row: 1;
+}
+
+.rentEndingDate,
+.bankBeinleumi,
+.paymentsProducing {
+    grid-row: 2;
+}
+
+.closeExitPoints,
+.bankMasad,
+.united {
+    grid-row: 3;
+}
+
+.activeStatus,
+.unitedPayments,
+.reports {
+    grid-row: 4;
+}
+
+.nonActiveStatus,
+.detailedPayments,
+.ongoingPayments {
+    grid-row: 5;
 }

@@ -1,0 +1,8 @@
+.general-search-container input {
+    height: 40px;
+    width: 200px;
+}
+
+.general-search-container i:hover {
+    font-weight: bold;
+}

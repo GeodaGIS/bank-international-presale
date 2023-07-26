@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import '../styles/app-header.css';
 import { NavLink, useLocation } from 'react-router-dom';
 import geodaLogo from '../icons/geoda_logo.png';
+import { GeneralSearch } from './GeneralSearch';
 
 
 export const AppHeader = () => {
@@ -26,13 +27,14 @@ export const AppHeader = () => {
             </nav>
 
             <section className='contact-container'>
+                <main>
+                    {/* <span className="pi pi-search"></span> */}
+                    <GeneralSearch />
+                </main>
                 <div>
-                    <span className='make-contact'>{'צור קשר'}</span>
+                    {/* <strong className="pi pi-pause"></strong> */}
                     <span className="pi pi-phone"></span>
-                    <strong className="pi pi-pause"></strong>
-                </div>
-                <div>
-                    <span className="pi pi-search"></span>
+                    <span className='make-contact'>{'צור קשר'}</span>
                 </div>
             </section>
 

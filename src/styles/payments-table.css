@@ -53,7 +53,12 @@
 }
 
 .payments-table-container header .table-search-container {
-    margin-left: 250px;
+    margin: auto auto auto 1108px;
+}
+
+.payments-table-container header article {
+    display: flex;
+    align-items: center;
 }
 
 .checkbox-column .p-column-header-content {

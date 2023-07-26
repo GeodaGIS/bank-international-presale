@@ -55,7 +55,7 @@
 }
 
 .assets-table-container header .table-search-container {
-    margin-left: 130px;
+    margin: auto auto auto 1300px;
 }
 
 .checkbox-column .p-column-header-content {

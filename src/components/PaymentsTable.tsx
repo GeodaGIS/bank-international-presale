@@ -12,6 +12,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import '../styles/payments-table.css';
 import { loadContracts } from "../store/actions/contractActions";
+import { Button } from 'primereact/button';
 
 
 export const PaymentsTable = () => {
@@ -37,7 +38,7 @@ export const PaymentsTable = () => {
         if (contracts.length && payments.length) {
             setAllPayments();
         }
-    }, [payments, contracts])
+    }, [payments, contracts, location.state])
 
 
     const onSearch = (searchVal) => {
@@ -61,14 +62,19 @@ export const PaymentsTable = () => {
 
     const setAllPayments = () => {
         const { entities } = location.state;
-        const readablePayments = useReadable(entities, 'payment');
+        let readablePayments = [];
+        if ('isByGenSearch' in location.state) {
+            readablePayments = entities;
+        } else {
+            readablePayments = useReadable(entities, 'payment');
+        }
         setReadablePayments(readablePayments);
     }
 
 
     const getFields = ({ state }) => {
         let fieldsMap = null;
-        if (state.he === 'הוראות תשלום מרוכזות') {
+        if (state.he === 'הפקת הוראת תשלום מרוכזת' || state.he === 'הוראות תשלום') {
             fieldsMap = {
                 contractNum: 'מספר חוזה',
                 num: 'מספר הוראת תשלום',
@@ -79,7 +85,7 @@ export const PaymentsTable = () => {
                 total: 'סה"כ לתשלום'
             };
         }
-        if (state.he === 'הוראות תשלום מפורטות') {
+        if (state.he === 'העברת ממשק') {
             fieldsMap = {
                 contractNum: 'מספר חוזה',
                 type: 'סוג הוראת תשלום',
@@ -110,11 +116,14 @@ export const PaymentsTable = () => {
                     <header>
                         <h2>{location.state.he}</h2>
                         <TableSearch onSearch={onSearch} />
-                        <Export
-                            records={selectedPayments.length ? selectedPayments : readablePayments}
-                            fields={fields}
-                            headline={'הוראות תשלום'}
-                        />
+                        <article>
+                            <Button label="הפקת הוראת תשלום" link />
+                            <Export
+                                records={selectedPayments.length ? selectedPayments : readablePayments}
+                                fields={fields}
+                                headline={location.state.he}
+                            />
+                        </article>
                     </header>
                     <DataTable
                         value={readablePayments}

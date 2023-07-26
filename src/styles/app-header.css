@@ -10,16 +10,21 @@
     margin-bottom: 7px;
 }
 
+.app-header-container nav {
+    margin: auto auto auto 1140px;
+}
+
 .app-header-container nav span {
     font-size: 20px;
 }
 
 .contact-container {
     display: flex;
-    gap: 5px;
+    gap: 25px;
     align-items: center;
 }
 
+.contact-container main,
 .contact-container div {
     display: flex;
     gap: 5px;
@@ -30,8 +35,8 @@
     cursor: pointer;
 }
 
-.contact-container div span .make-contact {
-    line-height: 20px;
+.make-contact {
+    height: 22px;
 }
 
 .geoda-logo {

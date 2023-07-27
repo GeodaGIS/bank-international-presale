@@ -117,7 +117,7 @@ export const PaymentsTable = () => {
                         <h2>{location.state.he}</h2>
                         <TableSearch onSearch={onSearch} />
                         <article>
-                            <Button label="הפקת הוראת תשלום" link />
+                            <Button label="הפקת הוראת תשלום" severity="secondary" />
                             <Export
                                 records={selectedPayments.length ? selectedPayments : readablePayments}
                                 fields={fields}

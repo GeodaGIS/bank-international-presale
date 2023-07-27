@@ -53,36 +53,32 @@ export const GeneralSearch = () => {
             return;
         }
 
-        const foundAssets = readableAssets.filter(asset => {
-            const values = Object.values(asset);
-            const strValues = values.map(value => `${value}`);
-            return strValues.includes(searchVal);
-        });
+        const foundAssets = readableAssets.filter(asset => isFound(asset, searchVal));
         if (foundAssets.length) {
-            const routeState = {
-                he: 'נכסים',
-                entities: foundAssets,
-                isByGenSearch: true
-            };
+            const routeState = getRouteState('נכסים', foundAssets);
             navigate('/assets-table', { state: routeState });
             inputRef.current.value = '';
             return;
         }
 
-        const foundPayments = readablePayments.filter(payment => {
-            const values = Object.values(payment);
-            const strValues = values.map(value => `${value}`);
-            return strValues.includes(searchVal);
-        });
+        const foundPayments = readablePayments.filter(payment => isFound(payment, searchVal));
         if (foundPayments.length) {
-            const routeState = {
-                he: 'הוראות תשלום',
-                entities: foundPayments,
-                isByGenSearch: true
-            };
+            const routeState = getRouteState('הוראות תשלום', foundPayments);
             navigate('/payments-table', { state: routeState });
             inputRef.current.value = '';
         }
+    }
+
+
+    const isFound = (asset, searchVal) => {
+        const values = Object.values(asset);
+        const strValues = values.map(value => `${value}`);
+        return strValues.includes(searchVal);
+    }
+
+
+    const getRouteState = (he, entities) => {
+        return { he, entities, isByGenSearch: true };
     }
 
 

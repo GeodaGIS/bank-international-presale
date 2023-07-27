@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     gap: 20px;
-    padding-left: 60px;
+    padding-left: 40px;
 }
 
 .asset-details-container article h1 {
@@ -20,7 +20,7 @@
     display: flex;
     justify-content: center;
     gap: 40px;
-    padding-left: 60px;
+    padding-left: 35px;
     opacity: 0.8;
 }
 
@@ -71,16 +71,21 @@
 
 .details-table-main-container .p-tabmenu-nav {
     background: none;
-    border: none;
+    /* border: none; */
     margin: 10px 0 0;
     display: flex;
     gap: 5px;
+    /* border: 1px solid; */
 }
 
 .details-table-main-container .p-tabmenu-nav .p-tabmenuitem {
-    background: none;
+    /* border-bottom: none; */
+    background: #b0b5cb85;
+}
+
+.details-table-main-container .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
     border: 1px solid;
-    border-bottom: none;
+    border-radius: 0;
 }
 
 .details-table-main-container .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {

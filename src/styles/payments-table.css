@@ -44,7 +44,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 10px;
+    margin: 10px 10px 20px;
     padding: 0 2px;
 }
 
@@ -53,12 +53,19 @@
 }
 
 .payments-table-container header .table-search-container {
-    margin: auto auto auto 1108px;
+    position: absolute;
+    left: 45%;
 }
 
 .payments-table-container header article {
     display: flex;
     align-items: center;
+    gap: 30px;
+}
+
+.payments-table-container header article button {
+    background: #7889a3;
+    height: 40px;
 }
 
 .checkbox-column .p-column-header-content {

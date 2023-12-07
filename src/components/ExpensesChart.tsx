@@ -26,12 +26,14 @@ export const ExpensesChart = () => {
             datasets: [
                 {
                     label: 'דמי שימוש ממודד',
+                    // mock data: (amount for every month)
                     data: [7000, 11000, 10000, 12000, 14000, 9000, 10000, 10000, 9000, 11000, 10000, 9000],
                     borderColor: '#579EB9',
                     tension: 0.4
                 },
                 {
                     label: 'סך הוצאות שוטפות',
+                    // mock data: (amount for every month)
                     data: [15000, 14000, 12000, 10000, 12000, 13000, 14000, 13000, 14000, 11000, 13000, 15000],
                     borderColor: 'rgba(245, 158, 11, 0.6)',
                     tension: 0.4

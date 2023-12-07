@@ -6,7 +6,8 @@ export function loadContracts() {
     return (dispatch) => {
         try {
             const contracts = ContractService.QueryAll();
-            dispatch({ type: 'SET_CONTRACTS', contracts });
+            const action = { type: 'SET_CONTRACTS', contracts };
+            dispatch(action);
         } catch (err) {
             console.error('Error in QueryAll contracts Action:', err);
             throw err;

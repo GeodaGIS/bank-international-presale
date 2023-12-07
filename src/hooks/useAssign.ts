@@ -16,6 +16,7 @@ export const useAssign = (assets: Asset[], contracts: Contract[]) => {
         const assetWithoutId = getWithoutId(asset);
         const contractWithoutId = getWithoutId(contract);
         const id = UtilService.makeId('assignedAsset');
+        // WE ACTUALLY NEED TO PRESENT EACH ASSET WITH ITS CONTRACT DATA ASSIGNED TO IT.
         const assignedAsset = { id, ...assetWithoutId, ...contractWithoutId };
         return assignedAsset;
     });

@@ -28,6 +28,7 @@ export const PendingChart = () => {
         const approversNames = pendingAssets.map(asset => asset.approverName);
         const uniqueApproversNames = [...new Set(approversNames)];
         uniqueApproversNames.sort();
+        // we need to know how many times each approver name exists in the data:
         const approversFrequencies = uniqueApproversNames.map(uniqueName => {
             return approversNames.reduce((frequency, name) => {
                 return (name === uniqueName) ? ++frequency : frequency;

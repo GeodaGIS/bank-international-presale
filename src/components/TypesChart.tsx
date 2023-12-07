@@ -24,6 +24,8 @@ export const TypesChart = () => {
     const getData = () => {
         const assignedAssets = useAssign(assets, contracts);
 
+        // for every asset type we need to get the assets that are in Ownership and those that are in Rent.
+
         const branch = {
             inOwnershipCount: assignedAssets.filter(asset => !asset.isInRent && asset.type === 'סניף').length,
             inRentCount: assignedAssets.filter(asset => asset.isInRent && asset.type === 'סניף').length

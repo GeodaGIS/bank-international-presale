@@ -30,7 +30,7 @@ function QueryAll() {
 function getInitialAssets() {
     return [
         {
-            id: makeId('a'),
+            id: makeId('a'), // a from 'asset'
             branchNum: 1,
             branchName: 'צפת',
             bankName: 'פאגי',

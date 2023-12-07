@@ -27,7 +27,7 @@ function QueryAll() {
 function getInitialPayments() {
     return [
         {
-            id: 'p_7561',
+            id: 'p_7561', // p from 'payment'
             num: 7561,
             frequency: 'שנתי',
             supplier: 'יעל שמחון',

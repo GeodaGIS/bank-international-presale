@@ -129,11 +129,13 @@ export const Tiles = () => {
 
 
     const getUnitedPayments = () => {
+        // WE NEED TO 'UNITE' THE PAYMENTS WITH EACH CONTRACT THAT THEY ARE BELONG TO.
         return payments.map(payment => {
             const contract = contracts.find(contract => contract.paymentsIds.includes(payment.id));
             return {
                 contractNum: contract.rentContractId,
                 ...payment,
+                // we need to present the payment number only if it's already payed:
                 num: (Date.now() > payment.payDate) ? payment.num : null
             }
         });
@@ -141,6 +143,9 @@ export const Tiles = () => {
 
 
     const getDetailedPayments = () => {
+        // WE NEED ACTUALLY TO SPLIT EACH PAYMENT INTO 2, IN ORDER TO PRESENT EACH PAYMENT TWICE:
+        // - ONCE AS A DEBIT
+        // - SECOND AS A CREDIT
         return payments.reduce((acc, payment) => {
             const contract = contracts.find(contract => contract.paymentsIds.includes(payment.id));
             const asset = assets.find(asset => asset.contractsIds.includes(contract.id));
@@ -173,7 +178,9 @@ export const Tiles = () => {
 
 
     const showEntities = (dataSet, idx) => {
+        // entities are actually the data to be presented
         if (idx >= 10) {
+            // there are 15 tiles in general and the last 5 should not do anything, only to be rendered.
             return;
         }
         const { he, entities } = dataSet;
@@ -190,6 +197,8 @@ export const Tiles = () => {
                 <>
                     {entitiesDataSets.map((dataSet, idx) => (
                         <div
+                            // we need to figure out on which tile the user has clicked,
+                            // so we will navigate him to the relevant route with the relevant data
                             onClick={() => showEntities(dataSet, idx)}
                             className={dataSet.en}
                             key={dataSet.en}

@@ -28,7 +28,7 @@ function QueryAll() {
 function getInitialContracts() {
     return [
         {
-            id: 'c_123',
+            id: 'c_123', // c from 'contract'
             rentContractId: 123,
             managementContractId: 5152,
             isInRent: false,
